@@ -31,8 +31,6 @@ export default function Map(props) {
         lng: -94.578331,
       }
 
-  // <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
-
   const collegeMarkers = props.colleges.map((college) => {
     return (
       <Marker
