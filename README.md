@@ -1,4 +1,4 @@
-![College Locator page screenshot](https://imgur.com/a/wRCVQHk)
+![College Locator page screenshot](https://i.imgur.com/OFUk8JW.png)
 
 # Getting Started with Create React App
 
