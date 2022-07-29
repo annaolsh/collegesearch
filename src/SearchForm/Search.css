@@ -1,0 +1,23 @@
+.search-comp {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+label {
+    margin: 0 2%;
+    font-size: 20px;
+}
+
+input {
+    border: solid 1px rgba(255, 255, 255, 0.8);
+    color: #002E40;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    min-height: 25px;
+    min-width: 50%;
+    padding: 0px 6px;
+}

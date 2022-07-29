@@ -1,10 +1,10 @@
-import React from "react";
-import "./Search.css";
+import React from "react"
+import "./Search.css"
 
 export default function Search(props) {
   return (
-    <div>
-      <label hidden>College Search</label>
+    <div className="search-comp">
+      <label>Search for colleges: </label>
       <input
         type="textarea"
         name="search"
@@ -13,5 +13,5 @@ export default function Search(props) {
         onChange={props.onInputChange}
       />
     </div>
-  );
+  )
 }

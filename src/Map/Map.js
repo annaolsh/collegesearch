@@ -1,16 +1,27 @@
-import React from "react"
+import React, { useState } from "react"
 import "./Map.css"
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api"
+import {
+  GoogleMap,
+  InfoWindow,
+  Marker,
+  useJsApiLoader,
+} from "@react-google-maps/api"
+import { mapStyles } from "./mapStyles"
 
 export default function Map(props) {
-  console.log("Map colleges ", props)
+  const [selected, setSelected] = useState(null)
+
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBVcGLeee4TM--ZQtIyAjL1ZiefbsVSqtU",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   })
 
   const mapContainerStyle = {
     width: "100vw",
-    height: "100vh",
+    height: "80vh",
+  }
+
+  const options = {
+    styles: mapStyles,
   }
 
   const center = props.colleges.length
@@ -23,8 +34,20 @@ export default function Map(props) {
   // <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
 
   const collegeMarkers = props.colleges.map((college) => {
-    return <Marker key="college.id" position={college.location}></Marker>
+    return (
+      <Marker
+        key={college.id}
+        position={college.location}
+        onClick={() => setSelected(college)}
+      ></Marker>
+    )
   })
+
+  const selectedMarkerInfo = selected ? (
+    <InfoWindow position={selected.location}>
+      <div>{selected.name}</div>
+    </InfoWindow>
+  ) : null
 
   return isLoaded ? (
     <section>
@@ -32,8 +55,10 @@ export default function Map(props) {
         mapContainerStyle={mapContainerStyle}
         zoom={4.5}
         center={center}
+        options={options}
       >
         {collegeMarkers.length && collegeMarkers}
+        {selected && selectedMarkerInfo}
       </GoogleMap>
     </section>
   ) : (

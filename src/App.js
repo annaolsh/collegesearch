@@ -8,7 +8,6 @@ function App() {
   const [userInput, setUserInput] = useState("")
   const [colleges, setColleges] = useState([])
 
-  console.log("App colleges ", colleges)
   function handleInputChange(event) {
     setUserInput(event?.target.value)
   }
@@ -23,7 +22,7 @@ function App() {
   }, [userInput])
 
   function searchColleges() {
-    const apiKey = "&api_key=X7jq0SMDNZNwIjnOu1WffzeXCZygoGVAJDQXv8xZ"
+    const apiKey = "&api_key=" + process.env.REACT_APP_COLLEGE_SEARCH_API_KEY
     const baseUrl =
       "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name="
     const params = "&fields=id,school.name,location"
@@ -53,7 +52,7 @@ function App() {
         <h1>College Locator</h1>
       </header>
       <main>
-        <Search userInput={userInput} onInputChange={handleInputChange} />;
+        <Search userInput={userInput} onInputChange={handleInputChange} />
         <Map colleges={colleges} />
       </main>
       <footer>Developed by Anna O.</footer>

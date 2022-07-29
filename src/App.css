@@ -1,0 +1,16 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+h1 {
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+footer {
+    margin: 0 2%;
+    font-weight: bold;
+}
