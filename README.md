@@ -1,3 +1,5 @@
+![College Locator page screenshot](https://i.imgur.com/OFUk8JW.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
