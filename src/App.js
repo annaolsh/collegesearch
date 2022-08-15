@@ -15,23 +15,22 @@ function App() {
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       if (userInput) {
+        const searchColleges = async () => {
+          const apiKey =
+            "&api_key=" + process.env.REACT_APP_COLLEGE_SEARCH_API_KEY
+          const baseUrl =
+            "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name="
+          const params = "&fields=id,school.name,location"
+          const res = await Axios(baseUrl + userInput + params + apiKey)
+          if (res.data.results.length) {
+            setColleges(formatColleges(res.data.results))
+          }
+        }
         searchColleges()
       }
     }, 500)
     return () => clearTimeout(timeOutId)
   }, [userInput])
-
-  function searchColleges() {
-    const apiKey = "&api_key=" + process.env.REACT_APP_COLLEGE_SEARCH_API_KEY
-    const baseUrl =
-      "https://api.data.gov/ed/collegescorecard/v1/schools.json?school.name="
-    const params = "&fields=id,school.name,location"
-    Axios.get(baseUrl + userInput + params + apiKey).then((res) => {
-      if (res.data.results.length) {
-        setColleges(formatColleges(res.data.results))
-      }
-    })
-  }
 
   function formatColleges(colleges) {
     return colleges.map((college) => {
